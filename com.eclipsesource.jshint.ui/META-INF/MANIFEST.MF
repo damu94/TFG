@@ -2,15 +2,22 @@ Manifest-Version: 1.0
 Bundle-SymbolicName: com.eclipsesource.jshint.ui;singleton:=true
 Archiver-Version: Plexus Archiver
 Built-By: ralf
-Require-Bundle: org.eclipse.ui;bundle-version="3.6.0",org.eclipse.core
- .runtime;bundle-version="3.6.0",org.eclipse.core.resources;bundle-ver
- sion="3.6.0"
+Require-Bundle: org.eclipse.ui;bundle-version="3.6.0",
+ org.eclipse.core.runtime;bundle-version="3.6.0",
+ org.eclipse.core.resources;bundle-version="3.6.0",
+ org.eclipse.wst.jsdt.ui;bundle-version="2.0.300",
+ org.eclipse.ui.ide;bundle-version="3.13.1",
+ org.eclipse.jdt.ui;bundle-version="3.13.51",
+ org.eclipse.jdt.core;bundle-version="3.13.100"
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: EclipseSource
-Import-Package: com.eclipsesource.jshint;version="[0.10.1,1.0.0)",com.
- eclipsesource.json;version="[0.9.0.jshint,0.9.0.jshint]"
+Import-Package: com.eclipsesource.jshint;version="[0.10.1,1.0.0)",
+ com.eclipsesource.jshint.internal;version="0.10.1",
+ com.eclipsesource.json;version="[0.9.0.jshint,0.9.0.jshint]",
+ org.eclipse.wst.jsdt.core,
+ org.mozilla.javascript
 Export-Package: com.eclipsesource.jshint.ui.internal;version="0.10.1";
  x-internal:=true,com.eclipsesource.jshint.ui.internal.builder;version
  ="0.10.1";x-internal:=true,com.eclipsesource.jshint.ui.internal.prefe

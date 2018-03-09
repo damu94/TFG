@@ -31,11 +31,12 @@ import org.eclipse.core.runtime.IProgressMonitor;
 //import org.eclipse.core.runtime.Status;
 import org.osgi.service.prefs.Preferences;
 
+import com.eclipsesource.jshint.IChecker;
 //import com.eclipsesource.jshint.JSHint;
 //import com.eclipsesource.jshint.ProblemHandler;
 //import com.eclipsesource.jshint.Text;
 //import com.eclipsesource.jshint.ui.internal.Activator;
-import com.eclipsesource.jshint.ui.internal.JShintAdapterChecker;
+import com.eclipsesource.jshint.ui.internal.JSHintAdapterChecker;
 import com.eclipsesource.jshint.ui.internal.builder.JSHintBuilder.CoreExceptionWrapper;
 import com.eclipsesource.jshint.ui.internal.preferences.EnablementPreferences;
 //import com.eclipsesource.jshint.ui.internal.preferences.JSHintPreferences;
@@ -45,7 +46,7 @@ import com.eclipsesource.jshint.ui.internal.preferences.ResourceSelector;
 class JSHintBuilderVisitor implements IResourceVisitor, IResourceDeltaVisitor {
 
 	// private final JSHint checker;
-	private final JShintAdapterChecker checker;
+	private final IChecker checker;
 	private final ResourceSelector selector;
 	private final IProgressMonitor monitor;
 
@@ -54,8 +55,9 @@ class JSHintBuilderVisitor implements IResourceVisitor, IResourceDeltaVisitor {
 		new EnablementPreferences(node);
 		selector = new ResourceSelector(project);
 //		checker = selector.allowVisitProject() ? createJSHint(project) : null;
-		checker = new JShintAdapterChecker(selector);
-		checker.createChecker(project);
+		checker = new JSHintAdapterChecker();
+		if(selector.allowVisitProject())
+			checker.createChecker(project);
 		this.monitor = monitor;
 	}
 
@@ -70,7 +72,7 @@ class JSHintBuilderVisitor implements IResourceVisitor, IResourceDeltaVisitor {
 			if (resource.getType() != IResource.FILE) {
 				descend = selector.allowVisitFolder(resource);
 			} else {
-				clean(resource);
+				checker.cleanMarkers(resource);
 				if (selector.allowVisitFile(resource)) {
 					check((IFile) resource);
 				}
@@ -114,9 +116,9 @@ class JSHintBuilderVisitor implements IResourceVisitor, IResourceDeltaVisitor {
 		}
 	}
 
-	private static void clean(IResource resource) throws CoreException {
-		new MarkerAdapter(resource).removeMarkers();
-	}
+//	private static void clean(IResource resource) throws CoreException {
+//		new MarkerAdapter(resource).removeMarkers();
+//	}
 
 //	private static InputStream getCustomLib() throws FileNotFoundException {
 //		JSHintPreferences globalPrefs = new JSHintPreferences();

@@ -13,6 +13,9 @@ package com.eclipsesource.jshint.ui.internal.builder;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.ui.IMarkerResolution;
+
+
 
 
 public class MarkerAdapter {
@@ -47,6 +50,9 @@ public class MarkerAdapter {
     IMarker marker = resource.createMarker( TYPE_PROBLEM );
     marker.setAttribute( IMarker.SEVERITY, severity );
     marker.setAttribute( IMarker.MESSAGE, message );
+    
+        
+       
     if( line >= 1 ) {
       // needed to display line number in problems view location column
       marker.setAttribute( IMarker.LINE_NUMBER, line );

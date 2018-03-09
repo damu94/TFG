@@ -11,11 +11,13 @@ import java.io.UnsupportedEncodingException;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.mozilla.javascript.NativeGenerator.GeneratorClosedException;
 
-import com.eclipsesource.jshint.Ichecker;
+import com.eclipsesource.jshint.IChecker;
 import com.eclipsesource.jshint.JSHint;
 import com.eclipsesource.jshint.ProblemHandler;
 import com.eclipsesource.jshint.Text;
@@ -23,18 +25,17 @@ import com.eclipsesource.jshint.ui.internal.builder.ConfigLoader;
 import com.eclipsesource.jshint.ui.internal.builder.MarkerAdapter;
 import com.eclipsesource.jshint.ui.internal.builder.MarkerHandler;
 import com.eclipsesource.jshint.ui.internal.preferences.JSHintPreferences;
-import com.eclipsesource.jshint.ui.internal.preferences.ResourceSelector;
 
-public class JShintAdapterChecker implements Ichecker {
+
+
+public class JSHintAdapterChecker implements IChecker {
 
 	private JSHint checker;
-	private ResourceSelector selector;
 	
 	
-	public JShintAdapterChecker(ResourceSelector selector) {
+	
+	public JSHintAdapterChecker() {
 		this.checker =new JSHint();
-		this.selector = selector;
-//		checker = selector.allowVisitProject() ? createJSHint(project) : null;
 	}
 	
 	public void createChecker(IProject project) throws CoreException {
@@ -61,7 +62,11 @@ public class JShintAdapterChecker implements Ichecker {
 		Text code = readContent(file);
 		ProblemHandler handler = new MarkerHandler(new MarkerAdapter(file), code);
 		checker.check(code, handler);
+		
+				
 	}
+	
+
 	
 	
 	private static InputStream getCustomLib() throws FileNotFoundException {
@@ -97,5 +102,11 @@ public class JShintAdapterChecker implements Ichecker {
 		}
 		return result;
 	}
+
+	public void cleanMarkers(IResource resource) throws CoreException {
+		new MarkerAdapter(resource).removeMarkers();
+		
+	}
+	
 	
 }

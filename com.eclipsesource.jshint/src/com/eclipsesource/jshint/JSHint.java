@@ -210,7 +210,7 @@ public class JSHint {
       Object object = errors.get( i, errors );
       ScriptableObject error = (ScriptableObject)object;
       if( error != null ) {
-        Problem problem = createProblem( error, text );
+    	Problem problem = createProblem( error, text );
         handler.handleProblem( problem );
       }
     }
@@ -221,6 +221,9 @@ public class JSHint {
     int line = getPropertyAsInt( error, "line", -1 );
     int character = getPropertyAsInt( error, "character", -1 );
     String code = getPropertyAsString( error, "code", "" );
+    
+
+    
     if( line <= 0 || line > text.getLineCount() ) {
       line = -1;
       character = -1;

@@ -19,6 +19,7 @@ import com.eclipsesource.jshint.ui.internal.builder.JSHintBuilder.CoreExceptionW
 import com.eclipsesource.jshint.ui.internal.preferences.JSHintPreferences;
 
 
+
 public class MarkerHandler implements ProblemHandler {
 
   private final MarkerAdapter markerAdapter;
@@ -28,6 +29,7 @@ public class MarkerHandler implements ProblemHandler {
   public MarkerHandler( MarkerAdapter markerAdapter, Text code ) {
     this.markerAdapter = markerAdapter;
     this.code = code;
+//    enableErrorMarkers= true; //TODO
     enableErrorMarkers = new JSHintPreferences().getEnableErrorMarkers();
   }
 
@@ -40,6 +42,7 @@ public class MarkerHandler implements ProblemHandler {
         offset = code.getLineOffset( line - 1 ) + character;
       }
       createMarker( line, offset, problem.getMessage(), problem.isError() );
+
     } else {
       createMarker( -1, -1, problem.getMessage(), problem.isError() );
     }

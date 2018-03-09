@@ -75,4 +75,22 @@
       </super>
    </extension>
 
+	 
+	<extension point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+         markerType="org.eclipse.core.resources.problemmarker"
+         class="com.eclipsesource.jshint.ui.quickfixes.QuickFixer"/>
+   </extension>
+
+
+	 <extension
+         point="org.eclipse.wst.jsdt.ui.quickFixProcessors">
+      <quickFixProcessor
+            name="jsprocessor"
+            class="com.eclipsesource.jshint.ui.quickfixes.QuickFixProcessor"
+            id="org.eclipse.wst.jsdt.ui.text.correction.QuickFixProcessor">
+      </quickFixProcessor>   
+   </extension>	
+
+
 </plugin>
