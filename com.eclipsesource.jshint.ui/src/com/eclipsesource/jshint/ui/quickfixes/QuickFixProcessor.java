@@ -12,13 +12,13 @@ public class QuickFixProcessor implements IQuickFixProcessor {
 	public IJavaCompletionProposal[] getCorrections(IInvocationContext arg0, IProblemLocation[] arg1)
 			throws CoreException {
 		// TODO Auto-generated method stub
-		System.out.println("QuickFixProcessor2.getCorrections()" + arg1.length);
+		System.out.println("QuickFixProcessor.getCorrections()=" + arg1.length);
 		return null;
 	}
 
 	public boolean hasCorrections(IJavaScriptUnit arg0, int arg1) {
-		System.out.println("QuickFixProcessor2.hasCorrections() " + arg1);
-		// TODO Auto-generated method stub
+//		System.out.println("QuickFixProcessor.hasCorrections()=" + arg1);
+//		System.out.println(arg0.toString());
 		return true;
 	}
 	

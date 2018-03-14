@@ -13,7 +13,8 @@ package com.eclipsesource.jshint.ui.internal.builder;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.ui.IMarkerResolution;
+import org.eclipse.wst.jsdt.core.IJavaScriptModelMarker;
+
 
 
 
@@ -33,15 +34,15 @@ public class MarkerAdapter {
     resource.deleteMarkers( TYPE_PROBLEM_OLD, true, IResource.DEPTH_INFINITE );
   }
 
-  public void createWarning( int line, int start, int end, String message ) throws CoreException {
-    createMarker( line, start, end, message, IMarker.SEVERITY_WARNING );
+  public void createWarning( int line, int start, int end, String message, String code ) throws CoreException {
+    createMarker( line, start, end, message, IMarker.SEVERITY_WARNING, code );
   }
 
-  public void createError( int line, int start, int end, String message ) throws CoreException {
-    createMarker( line, start, end, message, IMarker.SEVERITY_ERROR );
+  public void createError( int line, int start, int end, String message, String code ) throws CoreException {
+    createMarker( line, start, end, message, IMarker.SEVERITY_ERROR, code);
   }
 
-  private void createMarker( int line, int start, int end, String message, int severity )
+  private void createMarker( int line, int start, int end, String message, int severity, String code )
       throws CoreException
   {
     if( message == null ) {
@@ -50,7 +51,7 @@ public class MarkerAdapter {
     IMarker marker = resource.createMarker( TYPE_PROBLEM );
     marker.setAttribute( IMarker.SEVERITY, severity );
     marker.setAttribute( IMarker.MESSAGE, message );
-    
+    marker.setAttribute( IJavaScriptModelMarker.ID, code );
         
        
     if( line >= 1 ) {

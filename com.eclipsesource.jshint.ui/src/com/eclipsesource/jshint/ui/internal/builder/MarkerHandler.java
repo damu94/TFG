@@ -36,26 +36,27 @@ public class MarkerHandler implements ProblemHandler {
   public void handleProblem( Problem problem ) {
     int line = problem.getLine();
     int character = problem.getCharacter();
+    
     if( isValidLine( line ) ) {
       int offset = -1;
       if( isValidCharacter( line, character ) ) {
         offset = code.getLineOffset( line - 1 ) + character;
       }
-      createMarker( line, offset, problem.getMessage(), problem.isError() );
+      createMarker( line, offset, problem.getMessage(), problem.isError(), problem.getCode() );
 
     } else {
-      createMarker( -1, -1, problem.getMessage(), problem.isError() );
+      createMarker( -1, -1, problem.getMessage(), problem.isError(), problem.getCode() );
     }
   }
 
-  private void createMarker( int line, int character, String message, boolean isError )
+  private void createMarker( int line, int character, String message, boolean isError, String code )
       throws CoreExceptionWrapper
   {
     try {
       if( enableErrorMarkers && isError ) {
-        markerAdapter.createError( line, character, character, message );
+        markerAdapter.createError( line, character, character, message,code );
       } else {
-        markerAdapter.createWarning( line, character, character, message );
+        markerAdapter.createWarning( line, character, character, message,code );
       }
     } catch( CoreException ce ) {
       throw new CoreExceptionWrapper( ce );
