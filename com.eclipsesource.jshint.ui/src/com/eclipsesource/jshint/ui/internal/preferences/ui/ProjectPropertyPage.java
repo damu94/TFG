@@ -19,7 +19,7 @@ import org.osgi.service.prefs.Preferences;
 
 import com.eclipsesource.jshint.ui.internal.Activator;
 import com.eclipsesource.jshint.ui.internal.builder.BuilderUtil;
-import com.eclipsesource.jshint.ui.internal.builder.JSHintBuilder;
+import com.eclipsesource.jshint.ui.internal.builder.JSBuilder;
 import com.eclipsesource.jshint.ui.internal.preferences.EnablementPreferences;
 import com.eclipsesource.jshint.ui.internal.preferences.ResourceSelector;
 
@@ -84,14 +84,14 @@ public class ProjectPropertyPage extends AbstractPropertyPage {
   private boolean setBuilderEnabled( boolean enabled ) throws CoreException {
     IProject project = getResource().getProject();
     if( enabled ) {
-      return BuilderUtil.addBuilderToProject( project, JSHintBuilder.ID );
+      return BuilderUtil.addBuilderToProject( project, JSBuilder.ID );
     }
-    return BuilderUtil.removeBuilderFromProject( project, JSHintBuilder.ID );
+    return BuilderUtil.removeBuilderFromProject( project, JSBuilder.ID );
   }
 
   private void triggerRebuild() throws CoreException {
     IProject project = getResource().getProject();
-    BuilderUtil.triggerClean( project, JSHintBuilder.ID );
+    BuilderUtil.triggerClean( project, JSBuilder.ID );
   }
 
 }

@@ -45,7 +45,7 @@ public class ProblemImpl implements Problem {
   public boolean isError() {
 	  
 	  
-	  System.out.println(code + "-" + message);
+//	  System.out.println(code + "-" + message);
 	  
 	  
     return code != null && code.length() > 0 && code.charAt( 0 ) == 'E';

@@ -39,7 +39,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 import com.eclipsesource.jshint.JSHint;
 import com.eclipsesource.jshint.ui.internal.Activator;
 import com.eclipsesource.jshint.ui.internal.builder.BuilderUtil;
-import com.eclipsesource.jshint.ui.internal.builder.JSHintBuilder;
+import com.eclipsesource.jshint.ui.internal.builder.JSBuilder;
 import com.eclipsesource.jshint.ui.internal.preferences.JSHintPreferences;
 
 import static com.eclipsesource.jshint.ui.internal.util.LayoutUtil.gridData;
@@ -240,7 +240,7 @@ public class JSHintPreferencePage extends PreferencePage implements IWorkbenchPr
     IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
     for( IProject project : projects ) {
       if( project.isAccessible() ) {
-        BuilderUtil.triggerClean( project, JSHintBuilder.ID );
+        BuilderUtil.triggerClean( project, JSBuilder.ID );
       }
     }
   }

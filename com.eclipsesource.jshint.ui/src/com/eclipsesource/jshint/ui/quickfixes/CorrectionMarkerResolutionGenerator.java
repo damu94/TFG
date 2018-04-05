@@ -14,11 +14,13 @@ public class CorrectionMarkerResolutionGenerator implements IMarkerResolutionGen
 
 			switch (problem) {
 			case "E017":
-				return new IMarkerResolution[] { new QuickFix("Fix #1 for " + problem), };
+				return new IMarkerResolution[] { new QuickFix("Fix #1 for " + problem) };
 			case "W117":
-				return new IMarkerResolution[] { new QuickFix("Fix #2 for " + problem), };
+				return new IMarkerResolution[] { new QuickFix("Fix #2 for " + problem) };
+			case "E004":
+				return new IMarkerResolution[] { new QuickFix("Fix #3 for " + problem) };
 			default:
-				return null;
+				return new IMarkerResolution[0];
 			}
 
 		} catch (CoreException e) {

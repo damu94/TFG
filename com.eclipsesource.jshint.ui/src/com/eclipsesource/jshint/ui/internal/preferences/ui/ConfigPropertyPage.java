@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.Listener;
 
 import com.eclipsesource.jshint.ui.internal.Activator;
 import com.eclipsesource.jshint.ui.internal.builder.BuilderUtil;
-import com.eclipsesource.jshint.ui.internal.builder.JSHintBuilder;
+import com.eclipsesource.jshint.ui.internal.builder.JSBuilder;
 import com.eclipsesource.jshint.ui.internal.preferences.OptionsPreferences;
 import com.eclipsesource.jshint.ui.internal.util.JsonUtil;
 
@@ -200,7 +200,7 @@ public class ConfigPropertyPage extends AbstractPropertyPage {
 
   private void triggerRebuild() throws CoreException {
     IProject project = getResource().getProject();
-    BuilderUtil.triggerClean( project, JSHintBuilder.ID );
+    BuilderUtil.triggerClean( project, JSBuilder.ID );
   }
 
   private static boolean checkExists( IFile file ) {

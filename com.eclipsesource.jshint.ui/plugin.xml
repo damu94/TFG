@@ -56,7 +56,7 @@
             isConfigurable="false"
             supportsConfigurations="false">
          <run
-               class="com.eclipsesource.jshint.ui.internal.builder.JSHintBuilder">
+               class="com.eclipsesource.jshint.ui.internal.builder.JSBuilder">
          </run>
       </builder>
    </extension>
@@ -64,6 +64,21 @@
    <extension
          id="problemmarker"
          name="JSHint Problem"
+         point="org.eclipse.core.resources.markers">
+      <persistent
+            value="true">
+      </persistent>
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <super
+            type="org.eclipse.core.resources.textmarker">
+      </super>
+   </extension>
+   
+    <extension
+         id="jsproblemmarker"
+         name="JS"
          point="org.eclipse.core.resources.markers">
       <persistent
             value="true">
@@ -83,6 +98,8 @@
 					class="com.eclipsesource.jshint.ui.quickfixes.CorrectionMarkerResolutionGenerator">
 				</markerResolutionGenerator>
 		</extension>
+		
+	
 	
 
 </plugin>

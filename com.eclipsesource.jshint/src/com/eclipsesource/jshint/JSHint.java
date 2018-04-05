@@ -222,8 +222,7 @@ public class JSHint {
     int character = getPropertyAsInt( error, "character", -1 );
     String code = getPropertyAsString( error, "code", "" );
     
-
-    
+        
     if( line <= 0 || line > text.getLineCount() ) {
       line = -1;
       character = -1;

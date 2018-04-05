@@ -50,6 +50,7 @@ public class Text {
   }
 
   public int getLineCount() {
+
     return lineCount;
   }
 
@@ -64,6 +65,7 @@ public class Text {
     if( line < 0 || line >= lineCount ) {
       throw new IndexOutOfBoundsException( "line does not exist: " + line );
     }
+  
     return lineOffsets[ line ];
   }
 

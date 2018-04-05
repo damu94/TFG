@@ -15,7 +15,7 @@ import org.eclipse.core.runtime.CoreException;
 import com.eclipsesource.jshint.Problem;
 import com.eclipsesource.jshint.ProblemHandler;
 import com.eclipsesource.jshint.Text;
-import com.eclipsesource.jshint.ui.internal.builder.JSHintBuilder.CoreExceptionWrapper;
+import com.eclipsesource.jshint.ui.internal.builder.JSBuilder.CoreExceptionWrapper;
 import com.eclipsesource.jshint.ui.internal.preferences.JSHintPreferences;
 
 
@@ -29,8 +29,8 @@ public class MarkerHandler implements ProblemHandler {
   public MarkerHandler( MarkerAdapter markerAdapter, Text code ) {
     this.markerAdapter = markerAdapter;
     this.code = code;
-//    enableErrorMarkers= true; //TODO
-    enableErrorMarkers = new JSHintPreferences().getEnableErrorMarkers();
+//    enableErrorMarkers = new JSHintPreferences().getEnableErrorMarkers();
+    enableErrorMarkers=true;
   }
 
   public void handleProblem( Problem problem ) {

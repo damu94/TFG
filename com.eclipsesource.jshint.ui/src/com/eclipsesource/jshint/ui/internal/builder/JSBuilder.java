@@ -21,7 +21,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import com.eclipsesource.jshint.ui.internal.Activator;
 
 
-public class JSHintBuilder extends IncrementalProjectBuilder {
+public class JSBuilder extends IncrementalProjectBuilder {
 
   public static final String ID = Activator.PLUGIN_ID + ".builder";
   public static final String ID_OLD = "com.eclipsesource.jshint.builder";
@@ -50,14 +50,14 @@ public class JSHintBuilder extends IncrementalProjectBuilder {
 
   private void fullBuild( IProgressMonitor monitor ) throws CoreException {
     IProject project = getProject();
-    getProject().accept( new JSHintBuilderVisitor( project, monitor ) );
+    getProject().accept( new JSBuilderVisitor( project, monitor ) );
   }
 
   private void incrementalBuild( IResourceDelta delta, IProgressMonitor monitor )
       throws CoreException
   {
     IProject project = getProject();
-    delta.accept( new JSHintBuilderVisitor( project, monitor ) );
+    delta.accept( new JSBuilderVisitor( project, monitor ) );
   }
 
   static class CoreExceptionWrapper extends RuntimeException {

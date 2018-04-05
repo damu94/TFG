@@ -53,6 +53,7 @@ public class MarkerAdapter {
     marker.setAttribute( IMarker.MESSAGE, message );
     marker.setAttribute( IJavaScriptModelMarker.ID, code );
         
+ 
        
     if( line >= 1 ) {
       // needed to display line number in problems view location column

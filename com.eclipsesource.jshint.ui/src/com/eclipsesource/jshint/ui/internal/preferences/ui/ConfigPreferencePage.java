@@ -29,7 +29,7 @@ import org.osgi.service.prefs.Preferences;
 
 import com.eclipsesource.jshint.ui.internal.Activator;
 import com.eclipsesource.jshint.ui.internal.builder.BuilderUtil;
-import com.eclipsesource.jshint.ui.internal.builder.JSHintBuilder;
+import com.eclipsesource.jshint.ui.internal.builder.JSBuilder;
 import com.eclipsesource.jshint.ui.internal.preferences.OptionsPreferences;
 import com.eclipsesource.jshint.ui.internal.preferences.PreferencesFactory;
 
@@ -148,7 +148,7 @@ public class ConfigPreferencePage extends PreferencePage implements IWorkbenchPr
   private void triggerRebuild() throws CoreException {
     for( IProject project : getProjects() ) {
       if( project.isAccessible() ) {
-        BuilderUtil.triggerClean( project, JSHintBuilder.ID );
+        BuilderUtil.triggerClean( project, JSBuilder.ID );
       }
     }
   }
