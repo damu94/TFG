@@ -82,7 +82,7 @@ class JSBuilderVisitor implements IResourceVisitor, IResourceDeltaVisitor {
 	private void check(IFile file) throws CoreException {
 		
 		try {
-//			checkerJSHint.checkFile(file);
+			checkerJSHint.checkFile(file);
 			checkerJS.checkFile(file);
 			
 		} catch (CoreExceptionWrapper wrapper) {

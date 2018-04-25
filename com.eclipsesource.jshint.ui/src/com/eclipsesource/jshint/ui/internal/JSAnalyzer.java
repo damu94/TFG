@@ -1,23 +1,36 @@
 package com.eclipsesource.jshint.ui.internal;
 
+import java.util.List;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.jobs.ISchedulingRule;
+import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.wst.jsdt.core.IJavaScriptUnit;
+import org.eclipse.wst.jsdt.core.dom.AST;
+import org.eclipse.wst.jsdt.core.dom.ASTNode;
+import org.eclipse.wst.jsdt.core.dom.ASTParser;
+import org.eclipse.wst.jsdt.core.dom.JavaScriptUnit;
 
 
-import com.eclipsesource.jshint.Problem;
-import com.eclipsesource.jshint.ProblemHandler;
 import com.eclipsesource.jshint.Text;
-import com.eclipsesource.jshint.internal.ProblemImpl;
 
-@SuppressWarnings("restriction")
+
 public class JSAnalyzer {
 
-	public void check(Text code, ProblemHandler handler) {
-		if(code.getContent().contains("fallo")) {
-			Problem problem = new ProblemImpl(1,5,"cadena prohibida","E004");
-			handler.handleProblem(problem);
-		}
+	private ASTParser parser;
+
+	public JSAnalyzer() {
+		parser = ASTParser.newParser(AST.JLS3);
+	}
+
+	public void check(Text code) {
+
 		
 	}
 
 	
+ 
 	
 }

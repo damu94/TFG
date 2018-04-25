@@ -33,8 +33,8 @@ public class JSAdapterChecker implements IChecker {
 	@Override
 	public void checkFile(IFile file) throws CoreException {
 		Text code = readContent(file);
-		ProblemHandler handler = new MarkerHandler(new MarkerAdapter(file), code);
-		checker.check(code,handler);
+//		ProblemHandler handler = new MarkerHandler(new MarkerAdapter(file), code);
+		checker.check(code);
 
 	}
 
